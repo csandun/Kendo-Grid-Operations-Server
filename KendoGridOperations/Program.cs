@@ -75,11 +75,6 @@ app.MapGet("/get", async (NorthwindContext context) =>
     };
 
 
-
-    TreeFilterType a = (TreeFilterType) "Or";
-
-
-
     var customers = await context.Customers
         .Include(o => o.Orders)
         //.ThenInclude(o => o.ShipViaNavigation)

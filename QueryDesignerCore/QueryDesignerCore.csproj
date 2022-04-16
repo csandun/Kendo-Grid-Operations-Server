@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <VersionPrefix>3.0.2</VersionPrefix>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyName>QueryDesignerCore</AssemblyName>
+    <PackageId>Edvido.QueryDesignerCore</PackageId>
+    <NetStandardImplicitPackageVersion>2.0.0</NetStandardImplicitPackageVersion>
+    <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <RootNamespace>QueryDesignerCore</RootNamespace>
+    <PackageProjectUrl>https://github.com/yagizzcann/Edvido.QueryDesigner</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/yagizzcann/Edvido.QueryDesigner</RepositoryUrl>
+    <PackageReleaseNotes>Added 5 new filter types with names CountEquals,CountLessThan,CountLessThanOrEqual,CountGreaterThan and CountGreaterThanOrEqual.
+
+Also include filtering collections methods like .Any(t=&gt;t.Status &amp;&amp; t.MaxSpeed&gt;300)</PackageReleaseNotes>
+    <Version>4.0.0</Version>
+    <Authors>Vladislav Zhukov,Yağız Can</Authors>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseUrl>https://github.com/mrxten/QueryDesigner/blob/master/LICENSE</PackageLicenseUrl>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Description>QueryDesigner provides way of creating complex IQueryable filtering based on dynamic expression trees.
+Also includes filtering expression for collections like .Any(t=&gt;t.Status &amp;&amp; t.MaxSpeed&gt;300)</Description>
+    <PackageTags>IQueryable,Expression Tree</PackageTags>
+    <Copyright>MIT</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Linq.Queryable" Version="4.0.1" />
+  </ItemGroup>
+
+</Project>
