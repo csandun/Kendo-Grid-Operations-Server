@@ -23,7 +23,7 @@ namespace QueryDesignerCore
         /// <summary>
         /// Order filters.
         /// </summary>
-        public List<SortDescriptor> sort { get; set; }
+        public List<SortDescriptor> Sort { get; set; }
 
         /// <summary>
         /// Skip number of elements.

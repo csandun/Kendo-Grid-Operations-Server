@@ -10,7 +10,7 @@
         /// </summary>
         public SortDescriptor()
         {
-            Order = OrderFilterType.Asc;
+            Dir = "asc";
         }
 
         /// <summary>
@@ -21,6 +21,6 @@
         /// <summary>
         /// Sorting order.
         /// </summary>
-        public OrderFilterType Order { get; set; }
+        public string Dir { get; set; }
     }
 }

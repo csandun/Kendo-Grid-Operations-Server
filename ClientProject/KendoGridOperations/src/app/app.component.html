@@ -1,0 +1,47 @@
+<kendo-grid [data]="gridItems"
+            [pageSize]="pageSize"
+            [skip]="skip"
+            [pageable]="true"
+            (pageChange)="pageChange($event)"
+            [sortable]="true"
+            [sort]="sort"
+            (sortChange)="handleSortChange($event)"
+            [sortable]="{
+                    allowUnsort: true,
+                    mode: 'multiple'
+                  }"
+            filterable="menu"
+            (filterChange)="filterChange($event)"
+            [filter]="filter"
+>
+  <kendo-grid-column field="customerId" title="Customer Id">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <span>{{dataItem.customerId }}</span>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="companyName" title="Company Name">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <span>{{dataItem.companyName }}</span>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="contactName" title="Contact Name">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <span>{{dataItem.contactName }}</span>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="contactTitle" title="Contact Title">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <span>{{dataItem.contactTitle }}</span>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="address" title="Adrres">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <span>{{dataItem.address }}</span>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="city" title="City">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <span>{{dataItem.city }}</span>
+    </ng-template>
+  </kendo-grid-column>
+</kendo-grid>

@@ -17,16 +17,23 @@ namespace QueryDesignerCore
         /// <param name="query">Integrable request.</param>
         /// <param name="request">Container for filters.</param>
         /// <returns>Performed query.</returns>
-        public static IQueryable<T> Request<T>(this IQueryable<T> query, FilterContainer request)
+        public static (IQueryable<T>, int) Request<T>(this IQueryable<T> query, FilterContainer request)
         {
-            IQueryable<T> res = query
-                .Where(request.Filter)
-                .OrderBy(request.sort);
+            var res = query.Where(o =>  true).AsQueryable();                
+
+            if (request.Filter != null)
+                res = res.Where<T>(request.Filter).AsQueryable();
+
+            if (request.Sort != null )
+                res = res.OrderBy<T>(request.Sort).AsQueryable();
+
+
+            var totalCount = res.Count();
             if (request.Skip >= 0)
                 res = res.Skip(request.Skip);
             if (request.Take > 0)
                 res = res.Take(request.Take);
-            return res;
+            return (res, totalCount);
         }
 
         /// <summary>
@@ -36,7 +43,7 @@ namespace QueryDesignerCore
         /// <param name="query">An enumerated request.</param>
         /// <param name="request">Container for filters.</param>
         /// <returns>Performed query.</returns>
-        public static IQueryable<T> Request<T>(this IEnumerable<T> query, FilterContainer request)
+        public static (IQueryable<T>, int) Request<T>(this IEnumerable<T> query, FilterContainer request)
         {
             return query.AsQueryable().Request(request);
         }
@@ -53,7 +60,7 @@ namespace QueryDesignerCore
         /// <exception cref="InvalidOperationException" />
         /// <returns>Filtered query.</returns>
         public static IQueryable<T> Where<T>(this IQueryable<T> query, WhereFilter filter)
-        {           
+        {
             return filter != null ? query.Where(filter.GetExpression<T>()) : query;
         }
 

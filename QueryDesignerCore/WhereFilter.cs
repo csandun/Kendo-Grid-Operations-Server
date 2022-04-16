@@ -10,7 +10,7 @@
         /// </summary>
         public WhereFilter()
         {
-            Operator = WhereFilterType.None;
+            Operator = "none";
         }
 
         /// <summary>
@@ -21,7 +21,7 @@
         /// <summary>
         /// Type of field filtration.
         /// </summary>
-        public WhereFilterType Operator { get; set; }
+        public string Operator { get; set; }
 
         /// <summary>
         /// Value for filtering.

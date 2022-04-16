@@ -12,13 +12,13 @@ namespace QueryDesignerCore
         /// </summary>
         public Filter()
         {
-            Logic = TreeFilterType.None;
+            Logic = "none";
         }
 
         /// <summary>
         /// Type of logical operator.
         /// </summary>
-        public TreeFilterType Logic { get; set; }
+        public string Logic { get; set; }
 
         /// <summary>
         /// Operands of boolean expressions.

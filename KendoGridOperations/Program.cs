@@ -1,4 +1,5 @@
 using KendoGridOperations;
+using KendoGridOperations.Models;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using QueryDesignerCore;
@@ -14,6 +15,16 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<NorthwindContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+        });
+});
 
 
 
@@ -26,6 +37,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors();
 app.UseHttpsRedirection();
 
 var summaries = new[]
@@ -48,43 +60,23 @@ app.MapGet("/weatherforecast", () =>
 .WithName("GetWeatherForecast");
 
 
-app.MapGet("/get", async (NorthwindContext context) =>
+app.MapPost("/filter", async (NorthwindContext context, FilterContainer filter) =>
 {
-    var filter = new FilterContainer
-    {
-        Filter = new Filter
-        {
-            Logic = TreeFilterType.Or,
-            Filters = new List<Filter>
-            {
-                new Filter
-                {
-                    Logic = TreeFilterType.Or,
-                    Filters = new List<Filter>
-                    {
-                        new Filter
-                        {
-                            Field = "Orders.OrderDetails.Product.ProductId",
-                            Operator = WhereFilterType.Equal,
-                            Value = 1
-                        }
-                    }
-                }
-            }
-        }
-    };
-
-
-    var customers = await context.Customers
-        .Include(o => o.Orders)
-        //.ThenInclude(o => o.ShipViaNavigation)
-        .ThenInclude(o => o.OrderDetails)
-        .ThenInclude(o => o.Product)
-        .Request(filter)
-        .ToListAsync();    
-    return customers;
+    var (query, total) = context.Customers.AsNoTracking().AsQueryable<Customers>()
+         .Include(o => o.Orders)
+         //.ThenInclude(o => o.ShipViaNavigation)
+         .ThenInclude(o => o.OrderDetails)
+         .ThenInclude(o => o.Product)
+         .Request<Customers>(filter);
+    
+    var data = await query.ToListAsync();
+    var pageCount = (int)Math.Ceiling((float)total / (float)filter.Take);
+    var pageNo = ((int)(filter.Skip / filter.Take)) + 1;
+    var take = filter.Take;
+    var skip = filter.Skip;
+    return new { data, total, pageCount, pageNo, take, skip };
 })
-.WithName("Get ");
+.WithName("FilterCustomer");
 
 
 app.Run();

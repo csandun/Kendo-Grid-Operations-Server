@@ -78,8 +78,8 @@ namespace QueryDesignerCore.Expressions
             Type delegateType = typeof(Func<,>).MakeGenericType(typeof(T), type);
             Expression lambda = Expression.Lambda(delegateType, expr, arg);
             MethodInfo m = step == OrderStep.First
-                ? filter.Order == OrderFilterType.Asc ? QueryableOrderBy : QueryableOrderByDescending
-                : filter.Order == OrderFilterType.Asc ? QueryableThenBy : QueryableThenByDescending;
+                ? filter.Dir == "asc" ? QueryableOrderBy : QueryableOrderByDescending
+                : filter.Dir == "asc" ? QueryableThenBy : QueryableThenByDescending;
 
             return ((IOrderedQueryable<T>)m.MakeGenericMethod(typeof(T), type)
                 .Invoke(null, new object[] { data, lambda }));

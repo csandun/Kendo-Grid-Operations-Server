@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Downloads\Edvido.QueryDesigner-master\Edvido.QueryDesigner-master\src\QueryDesignerCore\QueryDesignerCore.csproj" />
+    <ProjectReference Include="..\QueryDesignerCore\QueryDesignerCore.csproj" />
   </ItemGroup>
 
 </Project>

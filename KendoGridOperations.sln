@@ -5,7 +5,7 @@ VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KendoGridOperations", "KendoGridOperations\KendoGridOperations.csproj", "{CC05A09F-7DBE-462A-AF98-A4D399F76793}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueryDesignerCore", "..\..\..\Downloads\Edvido.QueryDesigner-master\Edvido.QueryDesigner-master\src\QueryDesignerCore\QueryDesignerCore.csproj", "{71218E88-424D-4FBB-B64A-5D14D95C6C2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueryDesignerCore", "QueryDesignerCore\QueryDesignerCore.csproj", "{475A3F83-C771-4FA8-B840-50DB22A58CF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{CC05A09F-7DBE-462A-AF98-A4D399F76793}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC05A09F-7DBE-462A-AF98-A4D399F76793}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC05A09F-7DBE-462A-AF98-A4D399F76793}.Release|Any CPU.Build.0 = Release|Any CPU
-		{71218E88-424D-4FBB-B64A-5D14D95C6C2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{71218E88-424D-4FBB-B64A-5D14D95C6C2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{71218E88-424D-4FBB-B64A-5D14D95C6C2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{71218E88-424D-4FBB-B64A-5D14D95C6C2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{475A3F83-C771-4FA8-B840-50DB22A58CF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{475A3F83-C771-4FA8-B840-50DB22A58CF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{475A3F83-C771-4FA8-B840-50DB22A58CF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{475A3F83-C771-4FA8-B840-50DB22A58CF2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
